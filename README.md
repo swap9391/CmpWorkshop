@@ -41,7 +41,4 @@ Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-mu
 ![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-9.png)
 ![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-10.png)
 
-![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-4.png)
-![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-5.png)
-
 
