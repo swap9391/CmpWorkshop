@@ -17,9 +17,24 @@ Screen shots
 
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
-## Screenshots
+
+## Android Screenshots
 
 ![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/android-1.png)
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/android-2.png)
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/android-3.png)
 
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/android-4.png)
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/android-5.png)
+
+
+## iOS Screenshots
+
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-1.png)
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-2.png)
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-3.png)
+
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-4.png)
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/iphone-5.png)
 
 
