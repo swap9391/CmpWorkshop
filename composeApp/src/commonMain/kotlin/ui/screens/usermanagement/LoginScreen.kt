@@ -1,4 +1,4 @@
-package ui.screens
+package ui.screens.usermanagement
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -85,7 +85,10 @@ fun LogInScreen(navHostController: NavHostController) {
                     onValueChange = {}
                 )
 
-                MyMainButton(buttonTitle = stringResource(Res.string.text_log_in), modifier = Modifier.padding(25.dp))
+                MyMainButton(buttonTitle = stringResource(Res.string.text_log_in), modifier = Modifier.padding(25.dp),
+                    onClick = {
+                        navHostController.navigate(AppConstants.KEY_NAVIGATE_HOME)
+                    })
                 Spacer(modifier = Modifier.padding(top = 20.dp))
 
                 HyperLinkTextView(

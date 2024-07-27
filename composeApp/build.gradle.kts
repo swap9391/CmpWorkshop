@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -25,10 +24,6 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
-
-            export(libs.decompose.decompose)
-            export(libs.essenty.lifecycle)
-
         }
     }
     
@@ -49,13 +44,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(compose.material3)
             implementation(libs.navigation.compose)
-            implementation(libs.decompose.decompose)
-            implementation(libs.essenty.lifecycle)
-        }
-
-        iosMain.dependencies {
-            api(libs.decompose.decompose)
-            api(libs.essenty.lifecycle)
+            implementation("tech.annexflow.compose:constraintlayout-compose-multiplatform:0.4.0")
         }
     }
 }

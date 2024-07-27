@@ -1,4 +1,4 @@
-package ui.screens
+package ui.screens.usermanagement
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,7 +17,20 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import cmpworkshop.composeapp.generated.resources.*
+import cmpworkshop.composeapp.generated.resources.Res
+import cmpworkshop.composeapp.generated.resources.ic_user_contact
+import cmpworkshop.composeapp.generated.resources.ic_user_email
+import cmpworkshop.composeapp.generated.resources.ic_user_fulname
+import cmpworkshop.composeapp.generated.resources.ic_user_password
+import cmpworkshop.composeapp.generated.resources.text_already_have_account
+import cmpworkshop.composeapp.generated.resources.text_button_create_account
+import cmpworkshop.composeapp.generated.resources.text_create_an_account
+import cmpworkshop.composeapp.generated.resources.text_enter_contact
+import cmpworkshop.composeapp.generated.resources.text_full_name
+import cmpworkshop.composeapp.generated.resources.text_hint_email
+import cmpworkshop.composeapp.generated.resources.text_hint_password
+import cmpworkshop.composeapp.generated.resources.text_log_in
+import cmpworkshop.composeapp.generated.resources.text_securely_login_to_your_account
 import com.kocfour.mykmpworkshop.ui.theme.textstyle.MyTextStyle
 import org.jetbrains.compose.resources.stringResource
 import theme.ComposeWorkShopTheme
@@ -29,7 +42,6 @@ import ui.components.textView.MyTextView
 
 @Composable
 fun SignUpScreen(navHostController: NavHostController) {
-    //val context = LocalContext.current
 
     ComposeWorkShopTheme {
         Box(
@@ -110,7 +122,9 @@ fun SignUpScreen(navHostController: NavHostController) {
                     onValueChange = {}
                 )
 
-                MyMainButton(buttonTitle = stringResource(Res.string.text_button_create_account), modifier = Modifier.padding(25.dp))
+                MyMainButton(buttonTitle = stringResource(Res.string.text_button_create_account), modifier = Modifier.padding(25.dp), onClick = {
+                    navHostController.navigate(AppConstants.KEY_NAVIGATE_VERIFICATION)
+                })
                 Spacer(modifier = Modifier.padding(top = 20.dp))
 
 

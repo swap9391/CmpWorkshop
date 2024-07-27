@@ -1,4 +1,4 @@
-package ui.screens
+package ui.screens.usermanagement
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.AlertDialog
