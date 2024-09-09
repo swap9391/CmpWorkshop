@@ -13,10 +13,10 @@ import ui.components.textView.MyTextView
  * Composable function that represents the search screen of the application.
  */
 @Composable
-fun SearchScreen() {
+fun SettingsTab() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         MyTextView(
-            text = "Search Screen",
+            text = "Settings Screen",
             textStyle = MyTextStyle.TitleLight18,
             textColor = MaterialTheme.colorScheme.primaryContainer
         )

@@ -12,23 +12,28 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import theme.textstyle.TypographyUtils
 
 
+
 @Composable
 fun MyTextView(
     text: String,
     textStyle: MyTextStyle = MyTextStyle.TitleMedium12,
     textAlign :TextAlign = TextAlign.Left,
-    textColor : Color = MaterialTheme.colorScheme.primary,
+    maxLines: Int = 1,
+    softWrap: Boolean = false,
+    textColor : Color = MaterialTheme.colorScheme.primaryContainer,
     modifier: Modifier = Modifier,
 ) {
 
-        Text(
-            modifier = modifier,
-            text = AnnotatedString(text),
-            textAlign = textAlign,
-            color = textColor,
-            style = TypographyUtils.getKKTextStyle(textStyle),
-        )
-    }
+    Text(
+        modifier = modifier,
+        text = AnnotatedString(text),
+        textAlign = textAlign,
+        color = textColor,
+        maxLines = maxLines,
+        softWrap = softWrap,
+        style = TypographyUtils.getKKTextStyle(textStyle),
+    )
+}
 
 
 @Preview

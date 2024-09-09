@@ -13,10 +13,10 @@ import ui.components.textView.MyTextView
  * Composable function that represents the list screen of the application.
  */
 @Composable
-fun ListScreen() {
+fun AnalysisTab() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         MyTextView(
-            text = "List Screen",
+            text = "Analysis Screen",
             textStyle = MyTextStyle.TitleLight18,
             textColor = MaterialTheme.colorScheme.primaryContainer
         )

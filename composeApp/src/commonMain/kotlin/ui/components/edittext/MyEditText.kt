@@ -32,6 +32,7 @@ import theme.ColorLightPrimaryText
 import theme.ColorSecondaryText
 import theme.GreyColor
 import theme.PrimaryBlueTextColor
+import theme.SecondaryBlueTextColor
 import theme.textstyle.TypographyUtils
 import ui.components.textView.MyTextView
 
@@ -39,15 +40,17 @@ import ui.components.textView.MyTextView
 fun MyEditText(
     hint: String,
     text: String,
-    icon: DrawableResource,
-    keyboardType : KeyboardType = KeyboardType.Text,
+    icon: DrawableResource? = null,
+    keyboardType: KeyboardType = KeyboardType.Text,
     textStyle: MyTextStyle = MyTextStyle.TitleLight14,
     hintTextStyle: MyTextStyle = MyTextStyle.TitleLight12,
     textAlign: TextAlign = TextAlign.Left,
     isEnable: Boolean = true,
-    isPassword:Boolean = false,
+    isPassword: Boolean = false,
+    isBorder: Boolean = false,
     textLength: Int = 250,
     modifier: Modifier = Modifier,
+    containerColor: Color = GreyColor,
     onValueChange: ((updatedValue: String) -> Unit)
 ) {
     var input by rememberSaveable { mutableStateOf(text) }
@@ -57,14 +60,15 @@ fun MyEditText(
         value = input,
         modifier = modifier.apply {
             fillMaxWidth()
-            height(50.dp)
         },
-        leadingIcon = {
-            Icon(
-                painter = painterResource(icon),
-                contentDescription = "null", tint = Color.Unspecified
-            )
-        },
+        leadingIcon = if (icon != null) {
+            {
+                Icon(
+                    painter = painterResource(resource = icon),
+                    contentDescription = "null", tint = Color.Unspecified
+                )
+            }
+        } else null,
         placeholder = {
             MyTextView(
                 text = hint,
@@ -74,48 +78,62 @@ fun MyEditText(
             )
         },
         colors = TextFieldDefaults.colors(
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = if (isBorder) {
+                PrimaryBlueTextColor
+            } else {
+                Color.Transparent
+            },
+            unfocusedIndicatorColor = if (isBorder) {
+                PrimaryBlueTextColor
+            } else {
+                Color.Transparent
+            },
             cursorColor = PrimaryBlueTextColor,
-            unfocusedContainerColor = GreyColor,
-            focusedContainerColor = GreyColor,
+            unfocusedContainerColor = containerColor,
+            focusedContainerColor = containerColor,
+            disabledContainerColor = GreyColor,
             focusedTextColor = ColorLightPrimaryText,
             unfocusedTextColor = ColorLightPrimaryText,
         ),
         textStyle = TypographyUtils.getKKTextStyle(textStyle),
         singleLine = true,
-        keyboardOptions = KeyboardOptions(keyboardType = keyboardType,autoCorrect = false),
+        keyboardOptions = KeyboardOptions(keyboardType = keyboardType, autoCorrect = false),
         visualTransformation = if (isPassword && !passwordVisible) PasswordVisualTransformation() else VisualTransformation.None,
-        trailingIcon = {
-            if (isPassword) {
+        trailingIcon = if (isPassword) {
+            {
                 IconButton(onClick = { passwordVisible = !passwordVisible }) {
                     if (passwordVisible) {
-                            Icon(
-                                painter = painterResource(resource = Res.drawable.ic_user_hide_password),
-                                contentDescription = "null", tint = Color.Unspecified,
-                            )
-                        }else{
-                            Icon(
-                                painter = painterResource(resource = Res.drawable.ic_user_show_password),
-                                contentDescription = "null", tint = Color.Unspecified
-                            )
-                        }
+                        Icon(
+                            painter = painterResource(resource = Res.drawable.ic_user_hide_password),
+                            contentDescription = "null", tint = Color.Unspecified,
+                        )
+                    } else {
+                        Icon(
+                            painter = painterResource(resource = Res.drawable.ic_user_show_password),
+                            contentDescription = "null", tint = Color.Unspecified
+                        )
+                    }
                 }
             }
-        },
+        } else null,
         enabled = isEnable,
-        onValueChange = {newValue ->
-            if (newValue.length <= textLength){
-            input = newValue
-            onValueChange.invoke(newValue)}
+        onValueChange = { newValue ->
+            if (newValue.length <= textLength) {
+                input = newValue
+                onValueChange.invoke(newValue)
+            }
         }
     )
 }
+
 
 @Preview
 @Composable
 fun DefaultPreview() {
     MyEditText(
-        text = "", hint = "Enter Username", icon = Res.drawable.ic_user_email, onValueChange = {}
+        text = "", hint = "Enter Username",
+        icon = Res.drawable.ic_user_email,
+        containerColor = SecondaryBlueTextColor,
+        onValueChange = {}
     )
 }

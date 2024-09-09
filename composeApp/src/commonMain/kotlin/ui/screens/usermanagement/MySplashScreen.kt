@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import cmpworkshop.composeapp.generated.resources.Res
 import cmpworkshop.composeapp.generated.resources.ic_spash_drops
 import cmpworkshop.composeapp.generated.resources.img_splash_screen_background
@@ -30,6 +31,7 @@ import com.kocfour.mykmpworkshop.ui.theme.textstyle.MyTextStyle
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 import theme.WhiteColor
 import ui.AppConstants
 import ui.components.textView.MyTextView
@@ -57,6 +59,7 @@ import ui.components.textView.MyTextView
 
               navHostController.navigate(AppConstants.KEY_NAVIGATE_ONBOARDING)
      }
+
 
     ConstraintLayout(modifier = Modifier
         .fillMaxSize()
@@ -105,3 +108,17 @@ import ui.components.textView.MyTextView
         }
     }
 }
+
+@Preview
+@Composable
+fun GreetingPreview() {
+    val navController = rememberNavController()
+    MySplashScreen(navHostController = navController)
+
+    /*ComposeWorkShopTheme {
+        Surface(modifier = Modifier.fillMaxSize()) {
+            HomeScreen()
+        }
+    }*/
+}
+
