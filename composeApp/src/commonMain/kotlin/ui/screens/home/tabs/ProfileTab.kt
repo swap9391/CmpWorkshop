@@ -260,14 +260,13 @@ fun ProfileTab() {
                 MyMainButton(buttonTitle = stringResource(Res.string.text_update), isUpperCase = false,
                     modifier = Modifier
                         .constrainAs(btnUpdate) {
-                            top.linkTo(radioGender.bottom, margin = 13.dp)
+                            top.linkTo(sliderHeight.bottom, margin = 13.dp)
                             start.linkTo(parent.start, margin = 23.dp)
                             end.linkTo(parent.end, margin = 23.dp)
                             bottom.linkTo(parent.bottom, margin = 30.dp)
                         }
                         .width(121.dp)
                         .padding(bottom = 30.dp))
-
             }
 
         }
