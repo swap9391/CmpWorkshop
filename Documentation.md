@@ -56,7 +56,7 @@ To make sure you have all the prerequisite
 
 **Result**
 
-![image.png](/.attachments/image-97b2817e-5376-4916-a078-2747decc3d56.png)
+![App Screenshot](https://github.com/swap9391/CmpWorkshop/blob/main/screenshots/kdoctor.png)
 
 **Android Studio prerequisite:**  
 
