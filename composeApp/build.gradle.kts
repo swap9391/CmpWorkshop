@@ -45,6 +45,7 @@ kotlin {
             implementation(compose.material3)
             implementation(libs.navigation.compose)
             implementation("tech.annexflow.compose:constraintlayout-compose-multiplatform:0.4.0")
+            implementation("org.jetbrains.compose.ui:ui-backhandler:1.8.0")
         }
     }
 }

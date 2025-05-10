@@ -19,6 +19,7 @@ import cmpworkshop.composeapp.generated.resources.img_slider_2
 import cmpworkshop.composeapp.generated.resources.img_slider_3
 import cmpworkshop.composeapp.generated.resources.text_get_started
 import cmpworkshop.composeapp.generated.resources.text_next
+import cmpworkshop.composeapp.generated.resources.text_skip_all
 import cmpworkshop.composeapp.generated.resources.text_subtitle_slide_one
 import cmpworkshop.composeapp.generated.resources.text_subtitle_slide_three
 import cmpworkshop.composeapp.generated.resources.text_subtitle_slide_two
@@ -71,14 +72,16 @@ fun WelcomeSlideViewScreen(navHostController: NavHostController? = null) {
 
 
         HyperLinkTextView(
-            text = "Skip All",
+            text = stringResource(Res.string.text_skip_all),
             textStyle = MyTextStyle.TitleLight14,
             unselectedColor = PrimaryBlueTextColor,
             selectedColor = PrimaryLightBlueTextColor,
-            modifier = Modifier.constrainAs(skip) {
-                top.linkTo(parent.top)
-                end.linkTo(parent.end)
-            }.padding(end = 25.dp,top = 25.dp),
+            modifier = Modifier
+                .constrainAs(skip) {
+                    top.linkTo(parent.top)
+                    end.linkTo(parent.end)
+                }
+                .padding(end = 25.dp, top = 25.dp),
             onClick = {
                 coroutineScope.launch {
                     pagerState.animateScrollToPage(2)

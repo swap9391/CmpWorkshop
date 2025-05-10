@@ -9,10 +9,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -36,12 +39,18 @@ import org.jetbrains.compose.resources.stringResource
 import theme.ComposeWorkShopTheme
 import ui.AppConstants
 import ui.components.button.MyMainButton
+import ui.components.dropdown.MyDropDown
 import ui.components.edittext.MyEditText
 import ui.components.textView.HyperLinkTextView
 import ui.components.textView.MyTextView
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SignUpScreen(navHostController: NavHostController) {
+
+    BackHandler {
+        navHostController.navigate(AppConstants.KEY_NAVIGATE_LOGIN)
+    }
 
     ComposeWorkShopTheme {
         Box(
@@ -97,16 +106,24 @@ fun SignUpScreen(navHostController: NavHostController) {
                 Spacer(modifier = Modifier.padding(top = 20.dp))
 
 
-                MyEditText(
-                    text = "", hint = stringResource(Res.string.text_enter_contact),
-                    icon = Res.drawable.ic_user_contact,
-                    keyboardType = KeyboardType.Phone,
-                    textLength = 12,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 25.dp, end = 25.dp),
-                    onValueChange = {}
-                )
+                Row {
+                    MyDropDown(onCountryCodeSelected = {},
+                        modifier = Modifier.wrapContentSize()
+                            .align(Alignment.CenterVertically))
+
+                    MyEditText(
+                        text = "", hint = stringResource(Res.string.text_enter_contact),
+                        icon = Res.drawable.ic_user_contact,
+                        keyboardType = KeyboardType.Phone,
+                        textLength = 12,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 25.dp, end = 25.dp),
+                        onValueChange = {}
+                    )
+                }
+
+
                 Spacer(modifier = Modifier.padding(top = 20.dp))
 
 
@@ -122,9 +139,10 @@ fun SignUpScreen(navHostController: NavHostController) {
                     onValueChange = {}
                 )
 
-                MyMainButton(buttonTitle = stringResource(Res.string.text_button_create_account), modifier = Modifier.padding(25.dp), onClick = {
-                    navHostController.navigate(AppConstants.KEY_NAVIGATE_VERIFICATION)
-                })
+                MyMainButton(buttonTitle = stringResource(Res.string.text_button_create_account), modifier = Modifier.padding(25.dp),
+                    onClick = {
+                        navHostController.navigate(AppConstants.KEY_NAVIGATE_VERIFICATION)
+                    },)
                 Spacer(modifier = Modifier.padding(top = 20.dp))
 
 

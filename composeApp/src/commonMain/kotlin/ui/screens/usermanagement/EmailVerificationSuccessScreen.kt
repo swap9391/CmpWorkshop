@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -24,8 +26,12 @@ import ui.components.button.MyMainButton
 import ui.components.imageview.MyImageView
 import ui.components.textView.MyTextView
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun EmailVerificationSuccessScreen(navHostController: NavHostController? = null) {
+    BackHandler {
+        //Back restricted
+    }
 
     ComposeWorkShopTheme {
         ConstraintLayout(
