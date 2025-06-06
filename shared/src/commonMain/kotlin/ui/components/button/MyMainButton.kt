@@ -1,0 +1,86 @@
+package ui.components.button
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.toUpperCase
+import androidx.compose.ui.unit.dp
+import theme.textstyle.MyTextStyle
+import org.jetbrains.compose.ui.tooling.preview.Preview
+import theme.PrimaryBlueTextColor
+import theme.WhiteColor
+import theme.WhiteDisableColor
+import ui.components.textView.MyTextView
+
+
+/**
+ * Using KKTextView component you can set text to the textview. It accepts 4 parameters as below.
+ *
+ * @param text The value of the text to be displayed in textview component
+ * @param fontType The fontType is having 3 possible values Light, Medium and Regular. Default is Regular
+ * @param textStyle The textStyle is having multiple possible values. e.g XLargeTitle, LargeTitle, Title1, Title2 etc. Default is KKTextStyle.Title1
+ * @param textColor The color to be set to the text from KKColor format. Default is KKKColor.PureWhite
+ * @param contentDescription This parameter is used for automation test to identify textview component by contentDescriptor. Default value of content descriptor is text you set to KKTextView
+ */
+@Composable
+fun MyMainButton(
+    buttonTitle: String,
+    isEnable: Boolean = true,
+    contentDescription: String = buttonTitle,
+    modifier: Modifier = Modifier,
+    isUpperCase: Boolean = true,
+    onClick: () -> Unit = {},
+) {
+
+    val buttonColors = ButtonDefaults.buttonColors(
+        containerColor = PrimaryBlueTextColor,//if (isPressed) PrimaryBlueTextColor.copy(alpha = 0.7F) else PrimaryBlueTextColor,
+        contentColor = WhiteColor,
+        disabledContainerColor = PrimaryBlueTextColor.copy(alpha = 0.8F),
+        disabledContentColor = WhiteDisableColor
+    )
+
+
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .height(50.dp)
+            .semantics { this.contentDescription = contentDescription }
+    ) {
+
+
+        Button(modifier = Modifier
+            .height(60.dp)
+            .fillMaxWidth(),
+            enabled = isEnable,
+            colors = buttonColors,
+            shape = RoundedCornerShape(8.dp),
+            elevation = ButtonDefaults.buttonElevation(
+                defaultElevation = 4.dp,
+                pressedElevation = 8.dp
+
+            ),
+            contentPadding = ButtonDefaults.ContentPadding,
+            onClick = { onClick.invoke() }, content = @Composable {
+                MyTextView(text = if(isUpperCase){ buttonTitle.toUpperCase(Locale.current)}else{buttonTitle}
+                    , textStyle = MyTextStyle.TitleSemiBold14
+                    , textColor = WhiteColor)
+            }
+        )
+    }
+}
+
+
+@Preview
+@Composable
+fun DefaultPreview() {
+    MyMainButton(buttonTitle = "Submit", isUpperCase = false)
+}
+

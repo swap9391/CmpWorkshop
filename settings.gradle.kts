@@ -1,7 +1,7 @@
 rootProject.name = "CmpWorkshop"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-pluginManagement {
+/*pluginManagement {
     repositories {
         google {
             mavenContent {
@@ -13,9 +13,17 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
+}*/
+
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+    }
 }
 
-dependencyResolutionManagement {
+/*dependencyResolutionManagement {
     repositories {
         google {
             mavenContent {
@@ -26,6 +34,15 @@ dependencyResolutionManagement {
         }
         mavenCentral()
     }
+}*/
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
-include(":composeApp")
+
+include(":shared")
